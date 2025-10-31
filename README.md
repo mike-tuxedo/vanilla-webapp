@@ -15,8 +15,8 @@ This template uses Pico CSS for default styling. Webcomponents for special eleme
 
 ## Features you definitly want to implement yourself 
 - A caching and install strategy for the service worker
-- Custom appicon set
-- Offcourse your app logic
+- Custom app icon set
+- Of course your app logic
 
 ## 🛠️ Libraries used:
 - Pico CSS (<a href="https://picocss.com/">picocss.com</a>)
