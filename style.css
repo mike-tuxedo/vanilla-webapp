@@ -1,0 +1,240 @@
+html {
+    overflow: hidden;
+
+    body {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        margin: 0;
+        background-image: var(--custom-body-background);
+    }
+
+    /** Tag defaults */
+    article {
+        margin-bottom: 80px !important;
+    }
+
+    /** Layout */
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        color: var(--custom-header-color);
+        background-color: var(--custom-header-background);
+        backdrop-filter: blur(5px);
+        padding: 0 var(--saveSpaceH);
+        height: var(--toolbarHeight);
+        overflow: hidden;
+        opacity: 1;
+        transition: opacity 0.1s ease-in-out;
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: var(--toolbarHeight);
+            transition: all 0.3s ease-in-out;
+
+            .title {
+                margin: 0;
+                font-size: 1.3rem;
+                font-weight: 400;
+            }
+        }
+
+        &[drawer-open="true"] {
+            .header-content {
+                transform: scale(0.98);
+            }
+        }
+
+        &[drawer-open="false"] {
+            .header-content {
+                transform: scale(1);
+            }
+        }
+
+        &.hide {
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+    }
+
+    main {
+        position: absolute;
+        top: 0;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr;
+        transform-origin: top center;
+        transition: all 0.3s ease-in-out;
+
+        .main-content {}
+
+        .page {
+            grid-row-start: 1;
+            grid-column-start: 1;
+            overflow: auto;
+            padding: calc(var(--toolbarHeight) + 60px) var(--saveSpaceH);
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(50px) scale(0.98);
+            transition: all 0.2s ease-in-out;
+            height: 100vh;
+
+
+            &.hide {
+                display: block;
+            }
+
+            &.show {
+                pointer-events: initial;
+                opacity: 1;
+                transform: translateY(0px) scale(1);
+            }
+        }
+
+        &[drawer-open="true"] {
+            .main-content {
+                transform: scale(0.98);
+            }
+        }
+
+        &[drawer-open="false"] {
+            .main-content {
+                transform: scale(1);
+            }
+        }
+    }
+
+    footer {
+        position: sticky;
+        top: calc(100vh - var(--toolbarHeight));
+        z-index: 10;
+        width: 100%;
+        overflow: hidden;
+        background: var(--custom-footer-background);
+        backdrop-filter: blur(5px);
+        transition: translate 0.2s ease-in-out;
+
+        [role="group"] {
+            margin-bottom: 0 !important;
+
+            button {
+                color: var(--custom-footer-color);
+                border-top: 2px solid var(--custom-footer-border) !important;
+                border-radius: 0 !important;
+                padding: 0 !important;
+                height: var(--toolbarHeight) !important;
+                border: 1px solid transparent !important;
+
+                &:first-child.active-1,
+                &:nth-child(2).active-2,
+                &:nth-child(3).active-3,
+                &:nth-child(4).active-4 {
+                    color: var(--custom-footer-color-active) !important;
+                    border-top: 2px solid var(--custom-footer-border-active) !important;
+                }
+            }
+        }
+    }
+
+    body[drawer-open="true"] footer {
+        translate: 0 100%;
+    }
+
+    body[drawer-open="false"] footer {
+        translate: 0 0;
+    }
+
+    /** Components */
+    app-drawer {
+        position: fixed;
+        top: 0;
+        bottom: -30px;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        overflow: hidden;
+        pointer-events: none;
+        backdrop-filter: blur(0);
+        transition: all 0.3s ease;
+
+        * {
+            user-select: none;
+        }
+
+        .drawer-handle {
+            position: absolute;
+            top: 15px;
+            height: 10px;
+            cursor: grab;
+            left: 50%;
+            translate: -50% 0;
+            background: var(--pico-muted-color);
+            width: 120px;
+            border-radius: 5px;
+            border-top: 2px solid var(--pico-muted-color);
+            background: var(--pico-secondary);
+        }
+
+        .drawer-inner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: var(--saveSpaceV) var(--saveSpaceH);
+            height: 70vh;
+            overflow: auto;
+            background: var(--pico-primary-background);
+            color: var(--pico-primary-inverse);
+            border-top-right-radius: 20px;
+            border-top-left-radius: 20px;
+            transform: translateY(calc(100% + 100px));
+            transition: all 0.3s ease;
+
+            &.pointer-events-none {
+                pointer-events: none;
+            }
+        }
+
+        &.show {
+            pointer-events: initial;
+            backdrop-filter: blur(3px);
+            background-color: rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+
+            .drawer-inner {
+                transform: translateY(0%);
+            }
+        }
+    }
+
+    app-modal {
+        dialog {
+            article {
+                position: relative;
+                transition: opacity 0.3s ease;
+        
+                .modal-close {
+                    position: absolute;
+                    z-index: 100;
+                    right: 10px;
+                    top: 10px;
+                    padding: 4px 12px !important;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    /** Helper classes */
+    .hide:not(app-drawer-example):not(header) {
+        display: none;
+    }
+
+    .show:not(app-drawer-example) {
+        display: iniial;
+    }
+}

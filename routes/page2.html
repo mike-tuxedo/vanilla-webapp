@@ -1,0 +1,110 @@
+<hgroup>
+  <h2>Some example content</h2>
+  <p>Basic elements style from picoss. The drawer component is made by me. </p>
+</hgroup>
+
+<article>
+  <hgroup>
+    <h3>A card with a button that opens a drawer</h3>
+    <p>Open the drawer component, by clicking the button.</p>
+  </hgroup>
+  <button onclick="$id('myDrawer').open()">Open drawer</button>
+</article>
+
+<app-drawer id="myDrawer">
+  <h2>Drawer example</h2>
+  <p>This is a drawer example</p>
+  <button class="secondary" close-drawer>Close drawer</button>
+</app-drawer>
+
+<article>
+  <hgroup>
+    <h3>A card with a button that opens a modal</h3>
+    <p>Open the modal component, by clicking the button.</p>
+  </hgroup>
+  <button onclick="$id('myModal').open()">Open Modal</button>
+</article>
+
+<app-modal id="myModal">
+  <h3>Some title</h3>
+  <p>
+    Some text
+  </p>
+</app-modal>
+
+<article>
+  <hgroup>
+    <h3>My cusomt reactiveHtml lib</h3>
+    <p>An small library, that lets you render variables, if and for directives, which makes html reactive.</p>
+    <p>It is havily in ALPHA, so you may not use it in production.</p>
+  </hgroup>
+  <p>Here we have variables as well as rs-if and rs-for directives, which get reactive rendered, if the variable changes.</p>
+
+  <h4>Checked Todos</h4>
+  <ul class="items" rs-for="item in todos">
+      <li class="item">
+          <label for="todo-{index}">
+              <input id="todo-{index}" name="todo-{index}" {item.checked} type="checkbox" onchange="toggleTodo({index})"> {item.title}
+          </label>
+      </li>
+  </ul>
+  <ul><li rs-if="todos[0].checked == 'checked'">1 {todos[0].checked}</li> <li rs-if="todos[1].checked == 'checked'">2 {todos[1].checked}</li> <li rs-if="todos[2].checked == 'checked'">3 {todos[2].checked}</li></ul>
+
+
+  <h4>Active theme {theme}</h4>
+  <p>Default theme name is {themes[0]}</p>
+  <form>
+    <fieldset class="items" rs-for="item in themes">
+        <label>
+            <input name="theme" rs-checked="item === theme" type="radio" onchange="toggleTheme({index})"> {item}
+        </label>
+    </fieldset>
+  </form>
+</article>
+
+<article id="faq" aria-labelledby="faq-title">
+  <h2 id="faq-title">FAQ</h2>
+  <details>
+    <summary>Lorem ipsum dolor sit amet?</summary>
+    <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+  </details>
+  <details>
+    <summary>Ut enim ad minim veniam?</summary>
+    <p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </details>
+</article>
+
+<article id="analytics" aria-labelledby="analytics-title">
+    <h2 id="analytics-title">Some list and a button</h2>
+    <ul>
+      <li>Metric Alpha: 42.8%</li>
+      <li>Metric Beta: 1337 units</li>
+      <li>Metric Gamma: 23.5%</li>
+    </ul>
+    <button type="button">View details</button>
+</article>
+
+<article id="settings" aria-labelledby="settings-title">
+    <h2 id="settings-title">Some form</h2>
+    <form>
+      <label>
+        <span>Dolor sit</span>
+        <select>
+          <option>Option Alpha</option>
+          <option>Option Beta</option>
+        </select>
+      </label>
+      <fieldset>
+        <legend>Consectetur preferences:</legend>
+        <label>
+          <input type="checkbox" name="alpha" checked />
+          Lorem Alpha
+        </label>
+        <label>
+          <input type="checkbox" name="beta" checked />
+          Lorem Beta
+        </label>
+      </fieldset>
+      <button type="submit">Submit</button>
+    </form>
+</article>

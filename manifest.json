@@ -1,0 +1,41 @@
+{
+  "short_name": "Vanilla Webapp",
+  "name": "Vanilla Webapp - A simple PWA template",
+  "description": "A test application for a vanilla webapp",
+  "start_url": "/app/index.html?source=pwa",
+  "display": "standalone",
+  "theme_color": "#0ab1b1",
+  "background_color": "#0ab1b1",
+  "icons": [
+    {
+      "src": "assets/icons/apple-touch-icon-57x57.png",
+      "sizes": "57x57",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/apple-touch-icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/apple-touch-icon-114x114.png",
+      "sizes": "114x114",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/apple-touch-icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/apple-touch-icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/apple-touch-icon-180x180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
