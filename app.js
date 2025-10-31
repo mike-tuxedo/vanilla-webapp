@@ -1,3 +1,31 @@
+const { store, rs } = new ReactiveStore({
+    pageTitle: [
+        "Startpage",
+        "Showcase",
+        "Settings",
+        "The Why",
+    ],
+    activePage: 2,
+    todos: [
+        { title: "Todo 1", checked: "checked" },
+        { title: "Todo 2", checked: "" },
+        { title: "Todo 3", checked: "" },
+    ],
+    themes: ["cyan", "amber", "blue"],
+    theme: "cyan",
+});
+
+/**
+ * Logs changes to reactive store properties.
+ * 
+ * @param {string} prop - The property that changed.
+ * @param {*} oldValue - The old value of the property.
+ * @param {*} newValue - The new value of the property.
+ */
+store.on('change', (prop, oldValue, newValue) => {
+    console.log('Changed', prop, 'from', oldValue, 'to', newValue)
+})
+
 /**
  * Toggles the checkbox state of a todo item.
  * 
@@ -29,31 +57,6 @@ function darkLightToggle() {
         document.documentElement.setAttribute('data-theme', 'light')
     }
 }
-
-/**
- * Opens the drawer.
- */
-function openDrawer() {
-    rs.showDrawer = true;
-}
-
-/**
- * Closes the drawer.
- */
-function closeDrawer() {
-    rs.showDrawer = false;
-}
-
-/**
- * Logs changes to reactive store properties.
- * 
- * @param {string} prop - The property that changed.
- * @param {*} oldValue - The old value of the property.
- * @param {*} newValue - The new value of the property.
- */
-store.on('change', (prop, oldValue, newValue) => {
-    console.log('Changed', prop, 'from', oldValue, 'to', newValue)
-})
 
 /**
  * Registers the service worker if supported by the browser.
