@@ -32,7 +32,7 @@
         <script src="lib/reactiveHtml.js"></script>
     </head>
     <body>
-        <header drawer-open="{showDrawer}" data-color="{theme}">
+        <header data-color="{theme}">
             <div class="header-content">
                 <h1 class="title" rs-if="activePage === 1">
                     <strong>{pageTitle[0]}</strong>
@@ -157,6 +157,20 @@
                 </button>
             </div>
         </footer>
+
+        <!-- Components -->
+        <app-drawer id="myDrawer" class="pico">
+            <h2>Drawer example</h2>
+            <p>This is a drawer example</p>
+            <button class="secondary" close-drawer>Close drawer</button>
+        </app-drawer>
+
+        <app-modal id="myModal" class="pico">
+            <h3>Some title</h3>
+            <p>
+              Some text
+            </p>
+        </app-modal>
 
         <!-- Scripts -->
         <script src="app.js"></script>

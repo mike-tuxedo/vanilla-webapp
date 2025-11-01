@@ -26,7 +26,6 @@ html {
         height: var(--toolbarHeight);
         overflow: hidden;
         opacity: 1;
-        transition: opacity 0.1s ease-in-out;
 
         .header-content {
             display: flex;
@@ -34,6 +33,7 @@ html {
             align-items: center;
             width: 100%;
             height: var(--toolbarHeight);
+            transform: scale(1);
             transition: all 0.3s ease-in-out;
 
             .title {
@@ -43,21 +43,14 @@ html {
             }
         }
 
-        &[drawer-open="true"] {
-            .header-content {
-                transform: scale(0.98);
-            }
-        }
-
-        &[drawer-open="false"] {
-            .header-content {
-                transform: scale(1);
-            }
-        }
-
         &.hide {
             opacity: 0;
             transition: opacity 0.2s ease-in-out;
+        }
+    }
+    body[drawer-open="true"] header {
+        .header-content {
+            transform: scale(0.98);
         }
     }
 
@@ -68,9 +61,6 @@ html {
         display: grid;
         grid-template-columns: 1fr;
         transform-origin: top center;
-        transition: all 0.3s ease-in-out;
-
-        .main-content {}
 
         .page {
             grid-row-start: 1;
@@ -79,8 +69,9 @@ html {
             padding: calc(var(--toolbarHeight) + 60px) var(--saveSpaceH);
             pointer-events: none;
             opacity: 0;
+            transform-origin: top center;
             transform: translateY(50px) scale(0.98);
-            transition: all 0.2s ease-in-out;
+            transition: all 0.3s ease-in-out;
             height: 100vh;
 
 
@@ -105,6 +96,11 @@ html {
             .main-content {
                 transform: scale(1);
             }
+        }
+    }
+    body[drawer-open="true"] main {
+        .page {
+            transform: scale(0.98);
         }
     }
 
